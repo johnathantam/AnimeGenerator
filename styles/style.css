@@ -126,7 +126,7 @@ html, body {
     background-color: beige;
     border-radius: 8px;
     position: absolute;
-    background-image: url("/images/webImages/placeholder.png");
+    background-image: url("https://johnathantam.github.io/AnimeGenerator/images/webImages/placeholder.png");
     background-size: cover;
 }
 
@@ -139,7 +139,7 @@ html, body {
     border-radius: 8px;
     position: absolute;
     box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
-    background-image: url("/images/webImages/placeholder-small.png");
+    background-image: url("https://johnathantam.github.io/AnimeGenerator/images/webImages/placeholder-small.png");
     background-size: cover;
 }
 
@@ -152,7 +152,7 @@ html, body {
     border-radius: 8px;
     position: absolute;
     box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
-    background-image: url("/images/webImages/placeholder-tiny.png");
+    background-image: url("https://johnathantam.github.io/AnimeGenerator/images/webImages/placeholder-tiny.png");
     background-size: cover;
 }
 
@@ -288,7 +288,7 @@ html, body {
     border-radius: 15px 0px 0px 15px;
     box-shadow: 2px 5px 0px 0px rgb(203, 131, 255);
     background-color: indigo;
-    background-image: url("/images/webImages/guiding-image.png");
+    background-image: url("https://johnathantam.github.io/AnimeGenerator/images/webImages/guiding-image.png");
     background-size: cover;
 }
 
