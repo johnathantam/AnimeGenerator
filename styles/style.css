@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Hepta Slab", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.main-page-container {
+    width: 100%;
+    height: 95%;
+    display: flex;
+}
+
+.main-page-content-container {
+    width: 63%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(199, 199, 255);
+}
+
+.main-page-content-preview-tag {
+    width: 30%;
+    height: 5%;
+    margin-left: 15%;
+    font-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(164, 255, 225);
+}
+
+.main-page-content-title {
+    margin-top: 2%;
+    margin-left: 15%;
+    font-size: 500%;
+    font-weight: 600;
+    color: black;
+}
+
+.main-page-content-description {
+    margin-top: 1%;
+    margin-left: 15%;
+    font-size: 130%;
+    font-weight: 400;
+    color: black;
+}
+
+.main-page-content-action-buttons {
+    margin-top: 4%;
+    margin-left: 15%;
+    width: 50%;
+    height: 4%;
+    display: flex;
+    gap: 3%;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.main-page-content-generate-button {
+    padding-top: 4%;
+    padding-bottom: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(127, 255, 246);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-page-content-generate-button:hover {
+    cursor: pointer;
+    background-color: azure;
+}
+
+.main-page-content-download-button {
+    padding-top: 4%;
+    padding-bottom: 4%;
+    padding-left: 4%;
+    padding-right: 4%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(59, 177, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-page-content-download-button:hover {
+    cursor: pointer;
+    background-color: azure;
+}
+
+.main-page-content-preview-container {
+    width: 47%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.main-page-content-canvas-box {
+    width: 80%;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+}
+
+.main-page-content-big-canvas { /* BE AWARE OF BECAUSE THEY ARE CANVASES - IDK HOW TO DEAL WITH */
+    width: 100%;
+    height: 100%;
+    background-color: beige;
+    border-radius: 8px;
+    position: absolute;
+    background-image: url("/images/webImages/placeholder.png");
+    background-size: cover;
+}
+
+.main-page-content-small-canvas {
+    width: 12%;
+    aspect-ratio: 1/1;
+    background-color: aqua;
+    top: 80%;
+    right: 80%;
+    border-radius: 8px;
+    position: absolute;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    background-image: url("/images/webImages/placeholder-small.png");
+    background-size: cover;
+}
+
+.main-page-content-tiny-canvas {
+    width: 4%;
+    aspect-ratio: 1/1;
+    background-color: aqua;
+    top: 90%;
+    right: 90%;
+    border-radius: 8px;
+    position: absolute;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    background-image: url("/images/webImages/placeholder-tiny.png");
+    background-size: cover;
+}
+
+.secondary-page-content-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: blanchedalmond;
+}
+
+.secondary-page-content-title {
+    font-size: 400%;
+    margin-top: 5%;
+    margin-left: 8%;
+    color: black;
+}
+
+.secondary-page-content-options-container {
+    width: 80%;
+    height: 10%;
+    margin-left: 8%;
+    margin-top: 2%;
+    display: flex;
+    gap: 2%;
+    background-color: rgba(165, 42, 42, 0);
+}
+
+.secondary-page-content-option-box {
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.secondary-page-content-option-label {
+    font-size: 90%;
+    background-color: aqua;
+}
+
+.secondary-page-content-option-label-description {
+    margin-top: 4%;
+    font-size: 75%;
+}
+
+.secondary-page-content-option-input {
+    width: 60%;
+    height: 40%;
+    margin-top: 4%;
+    border: none;
+    border-bottom: 2px solid red;
+    outline: none;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.secondary-page-apply-options-box {
+    margin-top: 3%;
+    margin-left: 8%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.secondary-page-content-apply-options-button {
+    padding: 0.8% 1.2% 0.8% 1.2%;
+    background-color: greenyellow;
+    border-radius: 25px;
+    border: none;
+    font-weight: 500;
+}
+
+.secondary-page-content-apply-options-button:hover {
+    cursor: pointer;
+    background-color: darkslateblue;
+}
+
+.secondary-page-content-apply-prompt {
+    font-size: 80%;
+    display: flex;
+    align-self: flex-end;
+    margin-left: 2%;
+}
+
+.secondary-page-extra-images-container {
+    width: 100%;
+    height: 40%;
+    margin-top: 5%;
+    display: flex;
+}
+
+.secondary-page-add-images-prompt {
+    width: 20%;
+    height: 100%;
+    margin-left: 8%;
+    border-radius: 15px;
+    background-color: indigo;
+    box-shadow: 5px 5px 0px 0px rgb(203, 131, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.secondary-page-add-images-prompt:hover {
+    background-color: rgb(0, 44, 82);
+    cursor: pointer;
+}
+
+
+.secondary-page-add-images-title {
+    font-size: 100%;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+.secondary-page-add-images-description {
+    font-size: 85%;
+    margin-top: 4%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    width: 80%;
+}
+
+.secondary-page-add-images-upload-icon {
+    margin-top: 5%;
+}
+
+.secondary-page-add-images-guiding-image {
+    height: 100%;
+    flex-grow: 1;
+    margin-left: 1%;
+    border-radius: 15px 0px 0px 15px;
+    box-shadow: 2px 5px 0px 0px rgb(203, 131, 255);
+    background-color: indigo;
+    background-image: url("/images/webImages/guiding-image.png");
+    background-size: cover;
+}
+
+@keyframes error-shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-20px); }
+    50% { transform: translateX(20px); }
+    75% { transform: translateX(-20px); }
+    100% { transform: translateX(0); }
+}
+  
+.error-animation-option-location {
+    animation: error-shake 0.5s ease-in-out;
+    animation-iteration-count: 3;
+    background-color: rgb(255, 42, 78);
+}
+
+.error-prompt {
+    background-color: rgb(255, 42, 78);
+    font-weight: 600;
+}
+
+@keyframes updated {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.updated {
+    animation: updated 0.3s ease-out;
+}

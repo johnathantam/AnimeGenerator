@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime 4 Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/webImages/web-icon.png">
+    <link rel="stylesheet" href="styles/style.css">
+    <script defer src="dist/bundle.js"></script>
+</head>
+<body>
+    <main class="main-page-container">
+        <section class="main-page-content-container">
+            <div class="main-page-content-preview-tag">Why am I here?... to suffer?</div>
+            <h1 class="main-page-content-title">Anime Face Generator</h1>
+            <p class="main-page-content-description ">Create random anime faces or train your own model <br> with options and parameters.</p>
+            <div class="main-page-content-action-buttons">
+                <button class="main-page-content-generate-button" id="generate-piece-button">Generate</button>
+                <button class="main-page-content-download-button" id="download-generated-art-button"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg></button>
+            </div>
+        </section>
+        <section class="main-page-content-preview-container" id="preview-container">
+            <div class="main-page-content-canvas-box">
+                <canvas class="main-page-content-big-canvas" id="big-preview"></canvas>
+                <canvas class="main-page-content-small-canvas" id="small-preview"></canvas>
+                <canvas class="main-page-content-tiny-canvas" id="tiny-preview"></canvas>
+            </div>
+        </section>
+    </main>
+    <section class="secondary-page-content-container">
+        <h1 class="secondary-page-content-title">Create Your Own Model</h1>
+        <div class="secondary-page-content-options-container">
+            <div class="secondary-page-content-option-box">
+                <p class="secondary-page-content-option-label">Image Dimensions:</p>
+                <p class="secondary-page-content-option-label-description">The width and height of <br> the image.</p>
+                <input type="text" value="28" class="secondary-page-content-option-input" id="image-dimension-input">
+            </div>
+            <div class="secondary-page-content-option-box">
+                <p class="secondary-page-content-option-label">Node Layers:</p>
+                <p class="secondary-page-content-option-label-description">The layers and nodes of <br> the model.</p>
+                <input type="text" value="64, 32" class="secondary-page-content-option-input" id="node-layer-input">
+            </div>
+            <div class="secondary-page-content-option-box">
+                <p class="secondary-page-content-option-label">Latent Dimension:</p>
+                <p class="secondary-page-content-option-label-description">Amount of variations <br> in generations.</p>
+                <input type="text" value="16" class="secondary-page-content-option-input" id="latent-dimension-input">
+            </div>
+            <div class="secondary-page-content-option-box">
+                <p class="secondary-page-content-option-label">Training Amount:</p>
+                <p class="secondary-page-content-option-label-description">Amount of loops <br> to train.</p>
+                <input type="text" value="16" class="secondary-page-content-option-input" id="training-amount-input">
+            </div>
+            <div class="secondary-page-content-option-box">
+                <p class="secondary-page-content-option-label">Batch Size:</p>
+                <p class="secondary-page-content-option-label-description">Amount of images <br> used in each loop.</p>
+                <input type="text" value="16" class="secondary-page-content-option-input" id="batch-size-input">
+            </div>
+        </div>
+        <div class="secondary-page-apply-options-box">
+            <button class="secondary-page-content-apply-options-button" id="generate-model-button">Generate New Model</button>
+            <p class="secondary-page-content-apply-prompt" id="general-options-prompt">🎯 Adjust the options and click "Generate" to train your custom model, then start generating above! We provide you with 80 preset images.</p>
+        </div>
+        <div class="secondary-page-extra-images-container">
+            <input type="file" accept="image/png, image/jpeg" id="file-input" multiple style="display: none;">
+            <div type="file" class="secondary-page-add-images-prompt" id="add-extra-images-dropzone">
+                <p class="secondary-page-add-images-title">Add New Images</p>
+                <p class="secondary-page-add-images-description" id="image-drop-zone-prompt">You can add custom images here to train on your own data! Also, don't forget to click generate new model!</p>
+                <svg class="secondary-page-add-images-upload-icon" xmlns="http://www.w3.org/2000/svg" height="15%" viewBox="0 -960 960 960" width="15%" fill="#e8eaed"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+            </div>
+            <div class="secondary-page-add-images-guiding-image"></div>
+        </div>
+    </section>
+</body>
+</html>

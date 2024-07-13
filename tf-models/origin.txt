@@ -1,0 +1,101 @@
+This projects cites from and was pretrained in google colab
+https://blog.keras.io/building-autoencoders-in-keras.html
+
+Code Block #1: Loading Data
+
+from google.colab import drive
+drive.mount('/content/drive')
+!mkdir TrainingData
+!mkdir SavedData
+!mkdir ModelsToJSON
+!unzip /content/drive/MyDrive/Google-Colab-Files/Images.zip -d TrainingData
+
+Code Block #2: Converting trained models to tensorflow.js
+
+!pip install tensorflowjs
+!tensorflowjs_converter --input_format keras /SavedData/decoder_model.h5 /ModelsToJSON/json_decoder_model
+
+Code Block #3: Creating and training variational autoencoders
+
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+from tensorflow.keras.layers import Input, Dense, Lambda, Reshape, Flatten
+from tensorflow.keras.models import Model
+import tensorflow.keras.backend as K
+import tensorflow as tf
+from PIL import Image
+
+# Load images from TrainingData folder
+data_folder = 'TrainingData'
+file_list = os.listdir(data_folder) # Over 50 000 anime face images
+images = []
+
+for filename in file_list:
+    img = Image.open(os.path.join(data_folder, filename)).convert('RGB')  # Load image in RGB
+    img = img.resize((32, 32))
+    img = np.array(img)
+    images.append(img)
+
+x_train = np.array(images)
+x_train = x_train.astype('float32') / 255.
+x_train = x_train.reshape((len(x_train), -1))  # Flatten images
+
+# Define model parameters
+original_dim = 32 * 32 * 3
+intermediate_dim = 128
+latent_dim = 32
+
+# Define encoder model
+inputs = Input(shape=(original_dim,))
+h = Dense(intermediate_dim, activation='relu')(inputs)
+z_mean = Dense(latent_dim)(h)
+z_log_sigma = Dense(latent_dim)(h)
+
+def sampling(args):
+    z_mean, z_log_sigma = args
+    epsilon = K.random_normal(shape=(K.shape(z_mean)[0], latent_dim), mean=0., stddev=100.0)
+    return z_mean + K.exp(z_log_sigma) * epsilon
+
+z = Lambda(sampling)([z_mean, z_log_sigma])
+encoder = Model(inputs, [z_mean, z_log_sigma, z], name='encoder')
+
+# Define decoder model
+latent_inputs = Input(shape=(latent_dim,), name='z_sampling')
+x = Dense(intermediate_dim, activation='relu')(latent_inputs)
+x = Dense(original_dim, activation='sigmoid')(x)
+outputs = Reshape((32, 32, 3))(x)
+
+decoder = Model(latent_inputs, outputs, name='decoder')
+
+# Instantiate VAE model
+outputs = decoder(encoder(inputs)[2])
+vae = Model(inputs, outputs, name='vae_mlp')
+
+# Define VAE loss
+reconstruction_loss = tf.keras.losses.binary_crossentropy(K.flatten(inputs), K.flatten(outputs))
+reconstruction_loss *= original_dim
+kl_loss = 1 + z_log_sigma - K.square(z_mean) - K.exp(z_log_sigma)
+kl_loss = K.sum(kl_loss, axis=-1)
+kl_loss *= -0.5
+vae_loss = K.mean(reconstruction_loss + kl_loss)
+vae.add_loss(vae_loss)
+vae.compile(optimizer='adam')
+
+# Train the VAE model
+vae.fit(x_train, x_train, epochs=50, batch_size=256)
+
+# Save the model
+decoder.save('/SavedData/decoder_model.h5')
+
+# Generate a random point in the latent space
+z_sample = np.random.normal(size=(1, latent_dim))
+
+# Generate the image from the decoder
+x_decoded = decoder.predict(z_sample)
+digit = x_decoded[0]  # Assuming the digit size is 28x28x3
+
+# Plot the generated image
+plt.figure(figsize=(5, 5))
+plt.imshow(digit)
+plt.show()
